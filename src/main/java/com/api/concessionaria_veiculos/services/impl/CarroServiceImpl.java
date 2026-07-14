@@ -1,7 +1,9 @@
 package com.api.concessionaria_veiculos.services.impl;
 
+import com.api.concessionaria_veiculos.models.dtos.CarroRequestDTO;
 import com.api.concessionaria_veiculos.models.dtos.CarroResponseDTO;
 import com.api.concessionaria_veiculos.models.entities.CarroEntity;
+import com.api.concessionaria_veiculos.models.enums.StatusCarroEnum;
 import com.api.concessionaria_veiculos.models.mappers.CarroMapper;
 import com.api.concessionaria_veiculos.repositories.CarroRepository;
 import com.api.concessionaria_veiculos.services.CarroService;
@@ -20,5 +22,12 @@ public class CarroServiceImpl implements CarroService {
     public List<CarroResponseDTO> findAll() {
         return carroRepository.findAll().stream()
                 .map(CarroMapper::toDtoFromEntity).toList();
+    }
+
+    @Override
+    public CarroResponseDTO create(CarroRequestDTO dto) {
+        CarroEntity carro = CarroMapper.toEntityFromDto(dto, StatusCarroEnum.DISPONIVEL);
+        this.carroRepository.save(carro);
+        return CarroMapper.toDtoFromEntity(carro);
     }
 }
