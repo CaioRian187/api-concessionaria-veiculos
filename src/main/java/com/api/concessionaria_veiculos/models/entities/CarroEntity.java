@@ -2,6 +2,9 @@ package com.api.concessionaria_veiculos.models.entities;
 
 import com.api.concessionaria_veiculos.models.enums.StatusCarroEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -46,4 +49,14 @@ public class CarroEntity {
     @Enumerated(EnumType.STRING)
     private StatusCarroEnum statusCarro;
 
+    public CarroEntity(String marca, String modelo, String cor, String placa, BigDecimal preco, BigDecimal quilometragem, LocalDate dataFabricacao, StatusCarroEnum statusCarro) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.cor = cor;
+        this.placa = placa;
+        this.preco = preco;
+        this.quilometragem = quilometragem;
+        this.dataFabricacao = dataFabricacao;
+        this.statusCarro = statusCarro;
+    }
 }
