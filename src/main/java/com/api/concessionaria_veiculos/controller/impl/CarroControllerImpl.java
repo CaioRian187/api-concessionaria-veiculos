@@ -1,14 +1,14 @@
 package com.api.concessionaria_veiculos.controller.impl;
 
 import com.api.concessionaria_veiculos.controller.CarroController;
+import com.api.concessionaria_veiculos.models.dtos.CarroRequestDTO;
 import com.api.concessionaria_veiculos.models.dtos.CarroResponseDTO;
 import com.api.concessionaria_veiculos.services.CarroService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +23,11 @@ public class CarroControllerImpl implements CarroController {
     @GetMapping
     public ResponseEntity<List<CarroResponseDTO>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(this.carroService.findAll());
+    }
+
+    @Override
+    @PostMapping
+    public ResponseEntity<CarroResponseDTO> create(@RequestBody @Valid CarroRequestDTO dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.carroService.create(dto));
     }
 }
