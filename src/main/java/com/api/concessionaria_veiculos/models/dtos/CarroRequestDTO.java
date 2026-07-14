@@ -1,6 +1,5 @@
 package com.api.concessionaria_veiculos.models.dtos;
 
-import com.api.concessionaria_veiculos.models.enums.StatusCarroEnum;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
@@ -28,9 +27,6 @@ public record CarroRequestDTO(
 
         @NotNull(message = "A data de fabricação não pode ser nula.")
         @PastOrPresent(message = "A data de fabricação deve ser uma data passada ou a data de hoje.")
-        LocalDate dataFabricacao,
-
-        @NotNull(message = "O status não pode ser nulo.")
-        StatusCarroEnum statusCarro
+        LocalDate dataFabricacao
 ) {
 }
