@@ -13,8 +13,7 @@ public interface CarroController {
     @Operation(
             summary = "Buscar todos os Carros.",
             responses = {
-                    @ApiResponse(responseCode = "200"),
-                    @ApiResponse(responseCode = "404")
+                    @ApiResponse(responseCode = "200")
             }
     )
     ResponseEntity<List<CarroResponseDTO>> findAll();
