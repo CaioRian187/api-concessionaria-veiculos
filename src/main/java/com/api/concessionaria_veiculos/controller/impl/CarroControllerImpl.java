@@ -38,4 +38,10 @@ public class CarroControllerImpl implements CarroController {
     public ResponseEntity<CarroResponseDTO> findById(@PathVariable UUID id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.carroService.findById(id));
     }
+
+    @Override
+    @PutMapping("/{id}")
+    public ResponseEntity<CarroResponseDTO> update(@PathVariable UUID id, @RequestBody @Valid CarroRequestDTO dto) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.carroService.update(id, dto));
+    }
 }

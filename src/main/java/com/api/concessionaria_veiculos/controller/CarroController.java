@@ -38,4 +38,13 @@ public interface CarroController {
     )
     ResponseEntity<CarroResponseDTO> findById(UUID id);
 
+    @Operation(
+            summary = "Update Carro.",
+            responses = {
+                    @ApiResponse(responseCode = "200"),
+                    @ApiResponse(responseCode = "400"),
+                    @ApiResponse(responseCode = "404")
+            }
+    )
+    ResponseEntity<CarroResponseDTO> update(UUID id, CarroRequestDTO dto);
 }
