@@ -22,6 +22,13 @@ public class CarroServiceImpl implements CarroService {
     private final CarroRepository carroRepository;
 
     @Override
+    public CarroResponseDTO create(CarroRequestDTO dto) {
+        CarroEntity carro = CarroMapper.toEntityFromDto(dto, StatusCarroEnum.DISPONIVEL);
+        this.carroRepository.save(carro);
+        return CarroMapper.toDtoFromEntity(carro);
+    }
+
+    @Override
     public List<CarroResponseDTO> findAll() {
         return carroRepository.findAll().stream()
                 .map(CarroMapper::toDtoFromEntity).toList();
@@ -53,9 +60,21 @@ public class CarroServiceImpl implements CarroService {
     }
 
     @Override
-    public CarroResponseDTO create(CarroRequestDTO dto) {
-        CarroEntity carro = CarroMapper.toEntityFromDto(dto, StatusCarroEnum.DISPONIVEL);
+    public CarroResponseDTO update(UUID id, CarroRequestDTO dto) {
+
+        CarroEntity carro = this.carroRepository.findEntityById(id);
+
+        carro.setMarca(dto.marca());
+        carro.setModelo(dto.modelo());
+        carro.setCor(dto.cor());
+        carro.setPlaca(dto.placa());
+        carro.setPreco(dto.preco());
+        carro.setQuilometragem(dto.quilometragem());
+        carro.setDataFabricacao(dto.dataFabricacao());
+
         this.carroRepository.save(carro);
         return CarroMapper.toDtoFromEntity(carro);
     }
+
+
 }

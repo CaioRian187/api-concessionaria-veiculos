@@ -13,4 +13,5 @@ public interface CarroService {
     List<CarroResponseDTO> findAll();
     CarroResponseDTO findById(UUID id);
     CarroEntity findEntityById(UUID id);
+    CarroResponseDTO update(UUID id, CarroRequestDTO dto);
 }
