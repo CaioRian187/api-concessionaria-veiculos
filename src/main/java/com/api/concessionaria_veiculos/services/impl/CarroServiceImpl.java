@@ -62,7 +62,11 @@ public class CarroServiceImpl implements CarroService {
     @Override
     public CarroResponseDTO update(UUID id, CarroRequestDTO dto) {
 
-        CarroEntity carro = this.carroRepository.findEntityById(id);
+        CarroEntity carro = this.carroRepository.findById(id)
+                .orElseThrow( () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Carro de Id: " + id + " não encontrado."
+                ));
 
         carro.setMarca(dto.marca());
         carro.setModelo(dto.modelo());
