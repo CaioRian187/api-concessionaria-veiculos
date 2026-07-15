@@ -2,11 +2,15 @@ package com.api.concessionaria_veiculos.services;
 
 import com.api.concessionaria_veiculos.models.dtos.CarroRequestDTO;
 import com.api.concessionaria_veiculos.models.dtos.CarroResponseDTO;
+import com.api.concessionaria_veiculos.models.entities.CarroEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CarroService {
 
-    List<CarroResponseDTO> findAll();
     CarroResponseDTO create(CarroRequestDTO dto);
+    List<CarroResponseDTO> findAll();
+    CarroResponseDTO findById(UUID id);
+    CarroEntity findEntityById(UUID id);
 }
