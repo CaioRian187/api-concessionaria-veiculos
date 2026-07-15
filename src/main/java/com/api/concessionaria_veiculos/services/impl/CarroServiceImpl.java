@@ -76,5 +76,14 @@ public class CarroServiceImpl implements CarroService {
         return CarroMapper.toDtoFromEntity(carro);
     }
 
+    @Override
+    public void deleteById(UUID id) {
+        CarroEntity carro = this.carroRepository.findById(id)
+                .orElseThrow( () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Carro de Id: " + id + " não encontrado."
+                ));
+        this.carroRepository.deleteById(id);
+    }
 
 }

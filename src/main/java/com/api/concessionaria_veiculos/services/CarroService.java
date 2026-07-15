@@ -14,4 +14,5 @@ public interface CarroService {
     CarroResponseDTO findById(UUID id);
     CarroEntity findEntityById(UUID id);
     CarroResponseDTO update(UUID id, CarroRequestDTO dto);
+    void deleteById(UUID id);
 }
