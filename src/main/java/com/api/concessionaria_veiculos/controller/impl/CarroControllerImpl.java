@@ -44,4 +44,11 @@ public class CarroControllerImpl implements CarroController {
     public ResponseEntity<CarroResponseDTO> update(@PathVariable UUID id, @RequestBody @Valid CarroRequestDTO dto) {
         return ResponseEntity.status(HttpStatus.OK).body(this.carroService.update(id, dto));
     }
+
+    @Override
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(UUID id) {
+        this.carroService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

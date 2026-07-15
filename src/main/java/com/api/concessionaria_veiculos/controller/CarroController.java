@@ -47,4 +47,13 @@ public interface CarroController {
             }
     )
     ResponseEntity<CarroResponseDTO> update(UUID id, CarroRequestDTO dto);
+
+    @Operation(
+            summary = "Delete Carro.",
+            responses = {
+                    @ApiResponse(responseCode = "204"),
+                    @ApiResponse(responseCode = "404")
+            }
+    )
+    ResponseEntity<Void> deleteById(UUID id);
 }
