@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CarroController {
 
@@ -27,4 +28,14 @@ public interface CarroController {
             }
     )
     ResponseEntity<CarroResponseDTO> create(CarroRequestDTO dto);
+
+    @Operation(
+            summary = "Buscar Carros por Id.",
+            responses = {
+                    @ApiResponse(responseCode = "200"),
+                    @ApiResponse(responseCode = "404")
+            }
+    )
+    ResponseEntity<CarroResponseDTO> findById(UUID id);
+
 }

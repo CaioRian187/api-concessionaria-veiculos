@@ -3,6 +3,7 @@ package com.api.concessionaria_veiculos.controller.impl;
 import com.api.concessionaria_veiculos.controller.CarroController;
 import com.api.concessionaria_veiculos.models.dtos.CarroRequestDTO;
 import com.api.concessionaria_veiculos.models.dtos.CarroResponseDTO;
+import com.api.concessionaria_veiculos.models.entities.CarroEntity;
 import com.api.concessionaria_veiculos.services.CarroService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/carros")
@@ -29,5 +31,11 @@ public class CarroControllerImpl implements CarroController {
     @PostMapping
     public ResponseEntity<CarroResponseDTO> create(@RequestBody @Valid CarroRequestDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.carroService.create(dto));
+    }
+
+    @Override
+    @GetMapping("/{id}")
+    public ResponseEntity<CarroResponseDTO> findById(@PathVariable UUID id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.carroService.findById(id));
     }
 }
