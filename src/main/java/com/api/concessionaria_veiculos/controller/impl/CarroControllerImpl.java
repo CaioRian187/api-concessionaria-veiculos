@@ -47,7 +47,7 @@ public class CarroControllerImpl implements CarroController {
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(UUID id) {
+    public ResponseEntity<Void> deleteById(@PathVariable UUID id) {
         this.carroService.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
