@@ -5,6 +5,7 @@ import com.api.concessionaria_veiculos.models.dtos.CarroRequestDTO;
 import com.api.concessionaria_veiculos.models.dtos.CarroResponseDTO;
 import com.api.concessionaria_veiculos.models.entities.CarroEntity;
 import com.api.concessionaria_veiculos.services.CarroService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 @CrossOrigin("*")
+@Tag(name = "Carros")
 @RestController
 @RequestMapping("/carros")
 @RequiredArgsConstructor

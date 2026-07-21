@@ -13,7 +13,7 @@ public interface CarroController {
 
 
     @Operation(
-            summary = "Buscar todos os Carros.",
+            summary = "Buscar todos os Carros",
             responses = {
                     @ApiResponse(responseCode = "200")
             }
@@ -21,38 +21,33 @@ public interface CarroController {
     ResponseEntity<List<CarroResponseDTO>> findAll();
 
     @Operation(
-            summary = "Cadastrar Carro.",
+            summary = "Cadastrar Carro",
             responses = {
-                    @ApiResponse(responseCode = "201"),
-                    @ApiResponse(responseCode =  "400")
+                    @ApiResponse(responseCode = "201")
             }
     )
     ResponseEntity<CarroResponseDTO> create(CarroRequestDTO dto);
 
     @Operation(
-            summary = "Buscar Carros por Id.",
+            summary = "Buscar Carros por Id",
             responses = {
-                    @ApiResponse(responseCode = "200"),
-                    @ApiResponse(responseCode = "404")
+                    @ApiResponse(responseCode = "200")
             }
     )
     ResponseEntity<CarroResponseDTO> findById(UUID id);
 
     @Operation(
-            summary = "Update Carro.",
+            summary = "Update Carro",
             responses = {
-                    @ApiResponse(responseCode = "200"),
-                    @ApiResponse(responseCode = "400"),
-                    @ApiResponse(responseCode = "404")
+                    @ApiResponse(responseCode = "200")
             }
     )
     ResponseEntity<CarroResponseDTO> update(UUID id, CarroRequestDTO dto);
 
     @Operation(
-            summary = "Delete Carro.",
+            summary = "Delete Carro",
             responses = {
-                    @ApiResponse(responseCode = "204"),
-                    @ApiResponse(responseCode = "404")
+                    @ApiResponse(responseCode = "204")
             }
     )
     ResponseEntity<Void> deleteById(UUID id);
